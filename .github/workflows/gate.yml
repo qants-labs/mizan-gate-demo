@@ -1,0 +1,16 @@
+name: mizan-gate
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: qants-labs/mizan-ledger@3cf7326a969fed29858972cf0c8e3c2f52a4b329
+        with:
+          jsonl: data/results.jsonl
+          agent-id: demo-agent
